@@ -2,30 +2,29 @@ package config
 
 import (
 	"github.com/BurntSushi/toml"
-	"log"
+	"monkey-test-api/internal/logger"
 )
 
-type ServerConfig struct {
-	Host string `toml:"host"`
-	Port int    `toml:"port"`
-}
-
-type DatabaseConfig struct {
-	User     string `toml:"user"`
-	Password string `toml:"password"`
-	DbName   string `toml:"dbname"`
-}
-
 type Config struct {
-	Server   ServerConfig   `toml:"server"`
-	Database DatabaseConfig `toml:"database"`
+	Log      logger.Config `toml:"log"`
+	Database struct {
+		Type string `toml:"type"`
+		MySQL struct {
+			DSN string `toml:"dsn"`
+		} `toml:"mysql"`
+		MongoDB struct {
+			URI      string `toml:"uri"`
+			Database string `toml:"database"`
+		} `toml:"mongodb"`
+	} `toml:"database"`
+	// ... 其他配置
 }
 
-func LoadConfig(configPath string) (*Config, error) {
-	var config Config
-	if _, err := toml.DecodeFile(configPath, &config); err != nil {
-		log.Fatal(err)
+// LoadConfig 加载配置文件
+func LoadConfig(path string) (*Config, error) {
+	var cfg Config
+	if _, err := toml.DecodeFile(path, &cfg); err != nil {
 		return nil, err
 	}
-	return &config, nil
+	return &cfg, nil
 }

@@ -1,0 +1,102 @@
+{{define "content"}}
+<div class="container">
+    <header class="main-header">
+        <h1>🐵 API Monkey Tester</h1>
+        <p class="subtitle">轻量级 API 测试工具</p>
+    </header>
+    
+    <main>
+        <!-- cURL 输入区域 -->
+        <section class="input-section card">
+            <div class="input-header">
+                <h2>输入 cURL 命令</h2>
+                <div class="input-tips">
+                    <span class="tip-icon">💡</span>
+                    <span>从浏览器开发者工具复制 cURL 命令</span>
+                </div>
+            </div>
+            <div class="input-wrapper">
+                <div class="curl-label">curl</div>
+                <textarea id="curlInput" class="curl-input" spellcheck="false" placeholder="在此粘贴 cURL 命令...
+
+示例:
+curl 'https://api.example.com/users' \
+  -H 'Content-Type: application/json' \
+  -H 'Authorization: Bearer token123' \
+  -d '{
+    &quot;name&quot;: &quot;test&quot;,
+    &quot;age&quot;: 25
+  }'"></textarea>
+                <div class="button-group">
+                    <button class="primary-button" onclick="submitTest()">
+                        <span class="button-icon">🚀</span>
+                        开始测试
+                    </button>
+                    <button class="secondary-button" onclick="clearInput()">
+                        <span class="button-icon">🗑️</span>
+                        清空
+                    </button>
+                </div>
+            </div>
+            <div class="input-help">
+                <p>📋 提示：</p>
+                <ol>
+                    <li>在浏览器中打开开发者工具 (F12)</li>
+                    <li>切换到 Network 标签页</li>
+                    <li>找到要测试的请求</li>
+                    <li>右键选择 "Copy as cURL"</li>
+                    <li>粘贴到上方输入框</li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- 测试结果区域 -->
+        <section class="result-section card">
+            <div class="section-header">
+                <h2>测试结果</h2>
+                <button class="icon-button refresh-button" onclick="refreshResults()" title="刷新">
+                    <span>🔄</span>
+                </button>
+            </div>
+            <div class="divider"></div>
+            <div id="testResults" class="results-container">
+                <div class="placeholder">暂无测试结果</div>
+            </div>
+        </section>
+
+        <!-- 历史记录区域 -->
+        <section class="history-section card">
+            <div class="section-header">
+                <h2>历史记录</h2>
+            </div>
+            <div class="divider"></div>
+            <div id="requestHistory" class="history-container">
+                {{if .History}}
+                    {{range .History}}
+                    <div class="history-item" onclick="loadHistoryItem('{{.RequestID}}')">
+                        <div class="history-item-header">
+                            <span>{{.Method}} {{.URL}}</span>
+                            <span>{{formatTime .Timestamp}}</span>
+                        </div>
+                    </div>
+                    {{end}}
+                {{else}}
+                    <div class="placeholder">暂无历史记录</div>
+                {{end}}
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2024 API Monkey Tester - <a href="https://github.com/yourusername/api-monkey-tester" target="_blank">GitHub</a></p>
+    </footer>
+</div>
+{{end}}
+
+{{define "styles"}}
+{{.Styles}}
+{{end}}
+
+{{define "scripts"}}
+{{.Scripts}}
+{{end}} 

