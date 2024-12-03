@@ -15,6 +15,14 @@ func SetupRouter(handler *Handler) *gin.Engine {
 	// 首页路由
 	router.GET("/", handler.RenderIndex)
 
+	// 执行页面路由
+	router.GET("/execute", handler.RenderExecute)
+
+	// 健康检查
+	router.GET("/health", func(c *gin.Context) {
+		c.JSON(http.StatusOK, gin.H{"status": "ok"})
+	})
+
 	// API 路由组
 	v1 := router.Group("/api/v1")
 	{
@@ -23,4 +31,4 @@ func SetupRouter(handler *Handler) *gin.Engine {
 	}
 
 	return router
-} 
+}

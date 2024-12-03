@@ -1,0 +1,28 @@
+web/
+├── public/
+├── src/
+│   ├── assets/
+│   │   ├── styles/
+│   │   │   └── main.scss       # 全局样式
+│   │   └── images/             # 图片资源
+│   ├── components/
+│   │   ├── common/             # 通用组件
+│   │   └── execute/            # 执行页面相关组件
+│   ├── router/
+│   │   └── index.js           # 路由配置
+│   ├── store/
+│   │   └── index.js           # Pinia store
+│   ├── views/
+│   │   ├── Home.vue           # 首页
+│   │   └── Execute.vue        # 执行页面
+│   ├── api/
+│   │   └── index.js           # API 请求
+│   ├── utils/
+│   │   └── websocket.js       # WebSocket 工具
+│   ├── App.vue
+│   └── main.js
+├── .env
+├── .env.development
+├── .env.production
+├── package.json
+└── vite.config.js 

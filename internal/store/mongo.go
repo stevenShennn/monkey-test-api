@@ -13,6 +13,12 @@ const (
 	testObjectCollection = "test_objects"
 )
 
+// MongoStore MongoDB 存储实现
+type MongoStore struct {
+	db     *mongo.Database
+	client *mongo.Client
+}
+
 // InsertRequest 存储父请求
 func (s *MongoStore) InsertRequest(ctx context.Context, req *Request) error {
 	logger.Infof("开始存储请求: %s", req.RequestID)
@@ -153,4 +159,28 @@ func (s *MongoStore) UpdateTestObjectsByRequestID(ctx context.Context, requestID
 
 	logger.Infof("成功更新 %d 个子请求", result.ModifiedCount)
 	return nil
+}
+
+// NewMongoStore 创建新的 MongoDB 存储实例
+func NewMongoStore(uri, dbName string) (*MongoStore, error) {
+	ctx := context.Background()
+	client, err := mongo.Connect(ctx, options.Client().ApplyURI(uri))
+	if err != nil {
+		return nil, err
+	}
+
+	// 测试连接
+	if err := client.Ping(ctx, nil); err != nil {
+		return nil, err
+	}
+
+	return &MongoStore{
+		db:     client.Database(dbName),
+		client: client,
+	}, nil
+}
+
+// Close 关闭数据库连接
+func (s *MongoStore) Close() error {
+	return s.client.Disconnect(context.Background())
 } 

@@ -21,4 +21,30 @@ maxbackups = 10
 maxage = 30
 compress = true
 console = true
-a
+
+[task]
+# 字符串参数测试配置
+[task.string]
+values = [
+    { value = "", reason = "测试参数%s为空字符串" },
+    { value = "test", reason = "测试参数%s普通字符串" },
+    { value = "' OR '1'='1", reason = "测试参数%s SQL注入" },
+    { value = "<script>alert(1)</script>", reason = "测试参数%s XSS攻击" }
+]
+
+# 数字参数测试配置
+[task.number]
+values = [
+    { value = 0, reason = "测试参数%s为零" },
+    { value = -1, reason = "测试参数%s为负数" },
+    { value = 9999999, reason = "测试参数%s超大数值" },
+    { value = "not_a_number", reason = "测试参数%s非数字类型" }
+]
+
+# 布尔参数测试配置
+[task.bool]
+values = [
+    { value = true, reason = "测试参数%s为true" },
+    { value = false, reason = "测试参数%s为false" },
+    { value = "invalid", reason = "测试参数%s非布尔类型" }
+]

@@ -17,7 +17,20 @@ type Config struct {
 			Database string `toml:"database"`
 		} `toml:"mongodb"`
 	} `toml:"database"`
-	// ... 其他配置
+	Task struct {
+		String ParamTestConfig `toml:"string"`
+		Number ParamTestConfig `toml:"number"`
+		Bool   ParamTestConfig `toml:"bool"`
+	} `toml:"task"`
+}
+
+type ParamTestConfig struct {
+	Values []ParamTestValue `toml:"values"`
+}
+
+type ParamTestValue struct {
+	Value  interface{} `toml:"value"`
+	Reason string      `toml:"reason"`
 }
 
 // LoadConfig 加载配置文件

@@ -1,0 +1,24 @@
+<template>
+  <el-config-provider>
+    <router-view />
+  </el-config-provider>
+</template>
+
+<style>
+:root {
+  --primary-color: var(--el-color-primary);
+  --success-color: var(--el-color-success);
+  --error-color: var(--el-color-danger);
+  --text-color: var(--el-text-color-primary);
+  --border-color: var(--el-border-color);
+}
+
+body {
+  margin: 0;
+  font-family: var(--el-font-family);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: var(--text-color);
+  background-color: var(--el-bg-color-page);
+}
+</style> 

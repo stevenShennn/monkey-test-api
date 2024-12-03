@@ -2,31 +2,27 @@ package store
 
 import (
 	"time"
+	"monkey-test-api/internal/types"
+	"monkey-test-api/internal/task"
 )
 
-// Request 父请求数据模型
-type Request struct {
-	RequestID  string            `bson:"request_id" json:"requestID"`
-	Method     string            `bson:"method" json:"method"`
-	URL        string            `bson:"url" json:"url"`
-	Headers    map[string]string `bson:"headers" json:"headers"`
-	Body       interface{}       `bson:"body" json:"body"`
-	Params     map[string]string `bson:"params" json:"params"`
-	Timestamp  time.Time         `bson:"timestamp" json:"timestamp"`
-}
+// Request 类型别名
+type Request = types.Request
 
-// TestObject 子请求数据模型
+// TestObject 表示一个测试对象
 type TestObject struct {
-	TestID         string            `bson:"test_id" json:"testID"`
-	ParentRequestID string           `bson:"parent_request_id" json:"parentRequestID"`
-	Method         string            `bson:"method" json:"method"`
-	URL            string            `bson:"url" json:"url"`
-	Headers        map[string]string `bson:"headers" json:"headers"`
-	Body           interface{}       `bson:"body" json:"body"`
-	Params         map[string]string `bson:"params" json:"params"`
-	Reason         string            `bson:"reason" json:"reason"`
-	Response       *Response         `bson:"response,omitempty" json:"response,omitempty"`
-	Timestamp      time.Time         `bson:"timestamp" json:"timestamp"`
+	TestID          string                 `json:"test_id"`
+	ParentRequestID string                 `json:"parent_request_id"`
+	Method          string                 `json:"method"`
+	URL             string                 `json:"url"`
+	Headers         map[string]string      `json:"headers"`
+	Body            map[string]interface{} `json:"body"`
+	Params          map[string]interface{} `json:"params"`
+	Description     string                 `json:"description"`
+	Reason          string                 `json:"reason"`
+	Status          string                 `json:"status"`
+	Risk            string                 `json:"risk"`
+	Timestamp       time.Time             `json:"timestamp"`
 }
 
 // Response 响应数据模型
@@ -35,4 +31,26 @@ type Response struct {
 	Body      interface{}       `bson:"body" json:"body"`
 	Headers   map[string]string `bson:"headers" json:"headers"`
 	Timestamp time.Time         `bson:"timestamp" json:"timestamp"`
+}
+
+// ConvertTaskTestObjects 将 task.TestObject 转换为 store.TestObject
+func ConvertTaskTestObjects(taskObjs []task.TestObject) []TestObject {
+	storeObjs := make([]TestObject, len(taskObjs))
+	for i, obj := range taskObjs {
+		storeObjs[i] = TestObject{
+			TestID:          obj.TestID,
+			ParentRequestID: obj.ParentRequestID,
+			Method:          obj.Method,
+			URL:             obj.URL,
+			Headers:         obj.Headers,
+			Body:            obj.Body,
+			Params:          obj.Params,
+			Description:     obj.Description,
+			Reason:          obj.Reason,
+			Status:          obj.Status,
+			Risk:            obj.Risk,
+			Timestamp:       obj.Timestamp,
+		}
+	}
+	return storeObjs
 } 

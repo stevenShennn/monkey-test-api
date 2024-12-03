@@ -1,89 +1,168 @@
 package curl
 
 import (
-	"errors"
-	"github.com/google/uuid"
-	"monkey-test-api/internal/input"
+	"encoding/json"
+	"fmt"
 	"regexp"
 	"strings"
+	"time"
+
+	"monkey-test-api/internal/types"
 )
 
 type Parser struct{}
 
-// NewParser 创建一个新的 cURL 解析器
 func NewParser() *Parser {
 	return &Parser{}
 }
 
-// Parse 实现 input.Parser 接口，解析 cURL 命令
-func (p *Parser) Parse(curlCmd string) ([]input.Request, error) {
-	// 分割多个 cURL 命令
-	commands := splitCurlCommands(curlCmd)
-	requests := make([]input.Request, 0, len(commands))
+func (p *Parser) Parse(input string) ([]types.Request, error) {
+	// 1. 分割多个 cURL 命令
+	commands := splitCurlCommands(input)
+	if len(commands) == 0 {
+		return nil, fmt.Errorf("未找到有效的 cURL 命令")
+	}
 
+	// 2. 解析每个命令
+	var requests []types.Request
 	for _, cmd := range commands {
 		req, err := p.parseSingleCommand(cmd)
 		if err != nil {
-			return nil, err
+			return nil, fmt.Errorf("解析命令失败: %v", err)
 		}
-		requests = append(requests, req)
+		requests = append(requests, req...)
 	}
 
 	return requests, nil
 }
 
-// parseSingleCommand 解析单个 cURL 命令
-func (p *Parser) parseSingleCommand(cmd string) (input.Request, error) {
-	req := input.Request{
-		RequestID: uuid.New().String(),
-		Headers:   make(map[string]string),
-		Params:    make(map[string]string),
-	}
-
-	// 提取 URL
-	urlRegex := regexp.MustCompile(`curl ['"]([^'"]+)['"]`)
-	if matches := urlRegex.FindStringSubmatch(cmd); len(matches) > 1 {
-		req.URL = matches[1]
-		req.Method = "GET" // 默认方法为 GET
-	} else {
-		return req, errors.New("无法解析 URL")
-	}
-
-	// 提取请求头
-	headerRegex := regexp.MustCompile(`-H ['"]([^:]+):([^'"]+)['"]`)
-	headerMatches := headerRegex.FindAllStringSubmatch(cmd, -1)
-	for _, match := range headerMatches {
-		if len(match) == 3 {
-			req.Headers[strings.TrimSpace(match[1])] = strings.TrimSpace(match[2])
-		}
-	}
-
-	// 提取请求方法
-	methodRegex := regexp.MustCompile(`-X ([A-Z]+)`)
-	if matches := methodRegex.FindStringSubmatch(cmd); len(matches) > 1 {
-		req.Method = matches[1]
-	}
-
-	// 提取请求体
-	bodyRegex := regexp.MustCompile(`-d ['"](.+)['"]`)
-	if matches := bodyRegex.FindStringSubmatch(cmd); len(matches) > 1 {
-		req.Body = matches[1]
-	}
-
-	return req, nil
-}
-
 // splitCurlCommands 分割多个 cURL 命令
 func splitCurlCommands(input string) []string {
-	// 按照 "curl" 关键字分割，确保每个命令都是完整的
-	commands := regexp.MustCompile(`(?m)^curl`).Split(input, -1)
-	result := make([]string, 0)
-	
-	for _, cmd := range commands {
-		if cmd = strings.TrimSpace(cmd); cmd != "" {
-			result = append(result, "curl"+cmd)
+	// 按换行符分割
+	lines := strings.Split(input, "\n")
+	var commands []string
+	var currentCommand strings.Builder
+
+	for _, line := range lines {
+		line = strings.TrimSpace(line)
+		if line == "" {
+			continue
+		}
+
+		// 如果是新的 cURL 命令
+		if strings.HasPrefix(strings.ToLower(line), "curl ") {
+			// 保存之前的命令
+			if currentCommand.Len() > 0 {
+				commands = append(commands, currentCommand.String())
+				currentCommand.Reset()
+			}
+			currentCommand.WriteString(line)
+		} else if currentCommand.Len() > 0 {
+			// 继续当前命令
+			if strings.HasSuffix(line, "\\") {
+				// 处理续行符
+				currentCommand.WriteString(" " + strings.TrimSuffix(line, "\\"))
+			} else {
+				currentCommand.WriteString(" " + line)
+			}
 		}
 	}
-	
-	return result
-} 
+
+	// 添加最后一个命令
+	if currentCommand.Len() > 0 {
+		commands = append(commands, currentCommand.String())
+	}
+
+	return commands
+}
+
+// parseSingleCommand 解析单个 cURL 命令
+func (p *Parser) parseSingleCommand(input string) ([]types.Request, error) {
+	input = strings.TrimSpace(input)
+	if !strings.HasPrefix(strings.ToLower(input), "curl ") {
+		return nil, fmt.Errorf("无效的 cURL 命令：必须以 'curl' 开头")
+	}
+
+	// 解析 URL
+	urlPattern := regexp.MustCompile(`'([^']*)'|"([^"]*)"`)
+	urlMatches := urlPattern.FindStringSubmatch(input)
+	if len(urlMatches) < 3 {
+		return nil, fmt.Errorf("无法解析 URL")
+	}
+	url := urlMatches[1]
+	if url == "" {
+		url = urlMatches[2]
+	}
+
+	// 解析请求方法
+	method := "GET"
+	if strings.Contains(input, "-X ") || strings.Contains(input, "--request ") {
+		methodPattern := regexp.MustCompile(`-X\s+(\w+)|--request\s+(\w+)`)
+		methodMatches := methodPattern.FindStringSubmatch(input)
+		if len(methodMatches) > 1 {
+			if methodMatches[1] != "" {
+				method = methodMatches[1]
+			} else {
+				method = methodMatches[2]
+			}
+		}
+	}
+
+	// 解析请求头
+	// 4. 解析请求头
+	headers := make(map[string]string)
+	headerPattern := regexp.MustCompile(`-H\s+'([^']*)'|-H\s+"([^"]*)"`)
+	headerMatches := headerPattern.FindAllStringSubmatch(input, -1)
+	for _, match := range headerMatches {
+		header := match[1]
+		if header == "" {
+			header = match[2]
+		}
+		parts := strings.SplitN(header, ":", 2)
+		if len(parts) == 2 {
+			headers[strings.TrimSpace(parts[0])] = strings.TrimSpace(parts[1])
+		}
+	}
+
+	// 5. 解析请求体
+	body := make(map[string]interface{})
+	dataPattern := regexp.MustCompile(`-d\s+'([^']*)'|-d\s+"([^"]*)"`)
+	dataMatches := dataPattern.FindStringSubmatch(input)
+	if len(dataMatches) > 1 {
+		data := dataMatches[1]
+		if data == "" {
+			data = dataMatches[2]
+		}
+		if err := json.Unmarshal([]byte(data), &body); err != nil {
+			// 如果不是 JSON，则作为普通字符串处理
+			body["data"] = data
+		}
+	}
+
+	// 6. 解析查询参数
+	params := make(map[string]interface{})
+	if strings.Contains(url, "?") {
+		parts := strings.SplitN(url, "?", 2)
+		url = parts[0]
+		queryParams := strings.Split(parts[1], "&")
+		for _, param := range queryParams {
+			kv := strings.SplitN(param, "=", 2)
+			if len(kv) == 2 {
+				params[kv[0]] = kv[1]
+			}
+		}
+	}
+
+	// 7. 创建请求对象
+	request := types.Request{
+		RequestID: fmt.Sprintf("req_%d", time.Now().UnixNano()),
+		Method:    method,
+		URL:       url,
+		Headers:   headers,
+		Body:      body,
+		Params:    params,
+		Timestamp: time.Now(),
+	}
+
+	return []types.Request{request}, nil
+}

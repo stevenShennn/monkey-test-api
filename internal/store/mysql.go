@@ -3,11 +3,10 @@ package store
 import (
 	"context"
 	"database/sql"
+	"encoding/json"
 	"fmt"
-	"time"
 	_ "github.com/go-sql-driver/mysql"
 	"monkey-test-api/internal/logger"
-	"encoding/json"
 )
 
 type MySQLStore struct {
@@ -251,7 +250,7 @@ func (s *MySQLStore) DeleteTestObjectsByRequestID(ctx context.Context, requestID
 		DELETE FROM test_objects WHERE parent_request_id = ?
 	`, requestID)
 	if err != nil {
-		logger.Errorf("删除子请求失败: %v", err)
+		logger.Errorf("��除子请求失败: %v", err)
 		return err
 	}
 
@@ -267,4 +266,44 @@ func (s *MySQLStore) DeleteTestObjectsByRequestID(ctx context.Context, requestID
 // Close 关闭数据库连接
 func (s *MySQLStore) Close() error {
 	return s.db.Close()
-} 
+}
+
+// DeleteRequestByID 删除父请求及其关联数据
+func (s *MySQLStore) DeleteRequestByID(ctx context.Context, requestID string) error {
+	logger.Infof("开始删除请求及其关联数据: %s", requestID)
+
+	tx, err := s.db.BeginTx(ctx, nil)
+	if err != nil {
+		return err
+	}
+	defer tx.Rollback()
+
+	// 删除子请求
+	if err := s.DeleteTestObjectsByRequestID(ctx, requestID); err != nil {
+		return err
+	}
+
+	// 删除父请求
+	result, err := tx.ExecContext(ctx, `
+		DELETE FROM requests WHERE request_id = ?
+	`, requestID)
+	if err != nil {
+		return err
+	}
+
+	affected, err := result.RowsAffected()
+	if err != nil {
+		return err
+	}
+
+	if affected == 0 {
+		return nil
+	}
+
+	if err := tx.Commit(); err != nil {
+		return err
+	}
+
+	logger.Infof("成功删除请求及其关联数据: %s", requestID)
+	return nil
+}

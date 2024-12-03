@@ -1,0 +1,202 @@
+{"level":"INFO","time":"2024-12-02T18:37:11.837+0800","caller":"api-monkey-tester/main.go:90","msg":"服务器启动在 :8080"}
+{"level":"DEBUG","time":"2024-12-02T18:37:28.039+0800","caller":"store/mysql.go:148","msg":"开始查询请求列表, limit: 10"}
+{"level":"DEBUG","time":"2024-12-02T18:37:28.141+0800","caller":"store/mysql.go:182","msg":"成功查询到 0 条请求记录"}
+{"level":"ERROR","time":"2024-12-02T18:37:28.141+0800","caller":"api/handler.go:63","msg":"读取样式文件失败: open templates/styles.css: file does not exist"}
+{"level":"ERROR","time":"2024-12-02T18:37:28.141+0800","caller":"api/handler.go:69","msg":"读取脚本文件失败: open templates/scripts.js: file does not exist"}
+{"level":"DEBUG","time":"2024-12-02T18:37:31.539+0800","caller":"store/mysql.go:148","msg":"开始查询请求列表, limit: 10"}
+{"level":"DEBUG","time":"2024-12-02T18:37:31.624+0800","caller":"store/mysql.go:182","msg":"成功查询到 0 条请求记录"}
+{"level":"ERROR","time":"2024-12-02T18:37:31.624+0800","caller":"api/handler.go:63","msg":"读取样式文件失败: open templates/styles.css: file does not exist"}
+{"level":"ERROR","time":"2024-12-02T18:37:31.624+0800","caller":"api/handler.go:69","msg":"读取脚本文件失败: open templates/scripts.js: file does not exist"}
+{"level":"DEBUG","time":"2024-12-02T18:37:32.481+0800","caller":"store/mysql.go:148","msg":"开始查询请求列表, limit: 10"}
+{"level":"DEBUG","time":"2024-12-02T18:37:32.561+0800","caller":"store/mysql.go:182","msg":"成功查询到 0 条请求记录"}
+{"level":"ERROR","time":"2024-12-02T18:37:32.561+0800","caller":"api/handler.go:63","msg":"读取样式文件失败: open templates/styles.css: file does not exist"}
+{"level":"ERROR","time":"2024-12-02T18:37:32.561+0800","caller":"api/handler.go:69","msg":"读取脚本文件失败: open templates/scripts.js: file does not exist"}
+{"level":"INFO","time":"2024-12-02T18:41:51.175+0800","caller":"api-monkey-tester/main.go:33","msg":"接收到关闭信号，开始优雅关闭..."}
+{"level":"INFO","time":"2024-12-02T18:41:51.176+0800","caller":"api-monkey-tester/main.go:102","msg":"开始关闭服务..."}
+{"level":"INFO","time":"2024-12-02T18:41:51.176+0800","caller":"api-monkey-tester/main.go:116","msg":"服务已关闭"}
+{"level":"INFO","time":"2024-12-02T18:41:56.797+0800","caller":"api-monkey-tester/main.go:90","msg":"服务器启动在 :8080"}
+{"level":"DEBUG","time":"2024-12-02T18:42:01.392+0800","caller":"store/mysql.go:148","msg":"开始查询请求列表, limit: 10"}
+{"level":"DEBUG","time":"2024-12-02T18:42:01.458+0800","caller":"store/mysql.go:182","msg":"成功查询到 0 条请求记录"}
+{"level":"DEBUG","time":"2024-12-02T18:42:12.672+0800","caller":"store/mysql.go:148","msg":"开始查询请求列表, limit: 10"}
+{"level":"DEBUG","time":"2024-12-02T18:42:12.737+0800","caller":"store/mysql.go:182","msg":"成功查询到 0 条请求记录"}
+{"level":"DEBUG","time":"2024-12-02T18:42:33.249+0800","caller":"store/mysql.go:148","msg":"开始查询请求列表, limit: 10"}
+{"level":"DEBUG","time":"2024-12-02T18:42:33.336+0800","caller":"store/mysql.go:182","msg":"成功查询到 0 条请求记录"}
+{"level":"DEBUG","time":"2024-12-02T18:43:30.354+0800","caller":"store/mysql.go:148","msg":"开始查询请求列表, limit: 10"}
+{"level":"DEBUG","time":"2024-12-02T18:43:30.448+0800","caller":"store/mysql.go:182","msg":"成功查询到 0 条请求记录"}
+{"level":"INFO","time":"2024-12-02T18:44:35.385+0800","caller":"api-monkey-tester/main.go:33","msg":"接收到关闭信号，开始优雅关闭..."}
+{"level":"INFO","time":"2024-12-02T18:44:35.385+0800","caller":"api-monkey-tester/main.go:102","msg":"开始关闭服务..."}
+{"level":"INFO","time":"2024-12-02T18:44:35.386+0800","caller":"api-monkey-tester/main.go:116","msg":"服务已关闭"}
+{"level":"INFO","time":"2024-12-02T18:48:24.648+0800","caller":"api-monkey-tester/main.go:90","msg":"服务器启动在 :8080"}
+{"level":"DEBUG","time":"2024-12-02T18:48:30.856+0800","caller":"store/mysql.go:148","msg":"开始查询请求列表, limit: 10"}
+{"level":"DEBUG","time":"2024-12-02T18:48:30.925+0800","caller":"store/mysql.go:182","msg":"成功查询到 0 条请求记录"}
+{"level":"INFO","time":"2024-12-02T18:51:54.223+0800","caller":"api-monkey-tester/main.go:33","msg":"接收到关闭信号，开始优雅关闭..."}
+{"level":"INFO","time":"2024-12-02T18:51:54.223+0800","caller":"api-monkey-tester/main.go:102","msg":"开始关闭服务..."}
+{"level":"INFO","time":"2024-12-02T18:51:54.223+0800","caller":"api-monkey-tester/main.go:116","msg":"服务已关闭"}
+{"level":"INFO","time":"2024-12-02T18:52:01.206+0800","caller":"api-monkey-tester/main.go:90","msg":"服务器启动在 :8080"}
+{"level":"DEBUG","time":"2024-12-02T18:52:06.331+0800","caller":"store/mysql.go:148","msg":"开始查询请求列表, limit: 10"}
+{"level":"DEBUG","time":"2024-12-02T18:52:06.398+0800","caller":"store/mysql.go:182","msg":"成功查询到 0 条请求记录"}
+{"level":"DEBUG","time":"2024-12-02T18:52:12.361+0800","caller":"store/mysql.go:148","msg":"开始查询请求列表, limit: 10"}
+{"level":"DEBUG","time":"2024-12-02T18:52:12.428+0800","caller":"store/mysql.go:182","msg":"成功查询到 0 条请求记录"}
+{"level":"DEBUG","time":"2024-12-02T18:52:39.721+0800","caller":"store/mysql.go:148","msg":"开始查询请求列表, limit: 10"}
+{"level":"DEBUG","time":"2024-12-02T18:52:39.794+0800","caller":"store/mysql.go:182","msg":"成功查询到 0 条请求记录"}
+{"level":"INFO","time":"2024-12-02T18:53:40.633+0800","caller":"api-monkey-tester/main.go:33","msg":"接收到关闭信号，开始优雅关闭..."}
+{"level":"INFO","time":"2024-12-02T18:53:40.633+0800","caller":"api-monkey-tester/main.go:102","msg":"开始关闭服务..."}
+{"level":"INFO","time":"2024-12-02T18:53:40.634+0800","caller":"api-monkey-tester/main.go:116","msg":"服务已关闭"}
+{"level":"INFO","time":"2024-12-02T18:53:44.183+0800","caller":"api-monkey-tester/main.go:90","msg":"服务器启动在 :8080"}
+{"level":"DEBUG","time":"2024-12-02T18:53:47.724+0800","caller":"store/mysql.go:148","msg":"开始查询请求列表, limit: 10"}
+{"level":"DEBUG","time":"2024-12-02T18:53:47.790+0800","caller":"store/mysql.go:182","msg":"成功查询到 0 条请求记录"}
+{"level":"INFO","time":"2024-12-02T19:00:48.406+0800","caller":"api-monkey-tester/main.go:33","msg":"接收到关闭信号，开始优雅关闭..."}
+{"level":"INFO","time":"2024-12-02T19:00:48.406+0800","caller":"api-monkey-tester/main.go:102","msg":"开始关闭服务..."}
+{"level":"INFO","time":"2024-12-02T19:00:48.406+0800","caller":"api-monkey-tester/main.go:116","msg":"服务已关闭"}
+{"level":"INFO","time":"2024-12-02T19:00:54.997+0800","caller":"api-monkey-tester/main.go:90","msg":"服务器启动在 :8080"}
+{"level":"DEBUG","time":"2024-12-02T19:01:00.746+0800","caller":"store/mysql.go:148","msg":"开始查询请求列表, limit: 10"}
+{"level":"DEBUG","time":"2024-12-02T19:01:00.813+0800","caller":"store/mysql.go:182","msg":"成功查询到 0 条请求记录"}
+{"level":"INFO","time":"2024-12-02T19:03:01.253+0800","caller":"api-monkey-tester/main.go:33","msg":"接收到关闭信号，开始优雅关闭..."}
+{"level":"INFO","time":"2024-12-02T19:03:01.254+0800","caller":"api-monkey-tester/main.go:102","msg":"开始关闭服务..."}
+{"level":"INFO","time":"2024-12-02T19:03:01.254+0800","caller":"api-monkey-tester/main.go:116","msg":"服务已关闭"}
+{"level":"INFO","time":"2024-12-02T19:03:07.642+0800","caller":"api-monkey-tester/main.go:90","msg":"服务器启动在 :8080"}
+{"level":"DEBUG","time":"2024-12-02T19:03:20.646+0800","caller":"store/mysql.go:148","msg":"开始查询请求列表, limit: 10"}
+{"level":"DEBUG","time":"2024-12-02T19:03:20.711+0800","caller":"store/mysql.go:182","msg":"成功查询到 0 条请求记录"}
+{"level":"INFO","time":"2024-12-02T19:05:06.908+0800","caller":"api-monkey-tester/main.go:33","msg":"接收到关闭信号，开始优雅关闭..."}
+{"level":"INFO","time":"2024-12-02T19:05:06.908+0800","caller":"api-monkey-tester/main.go:102","msg":"开始关闭服务..."}
+{"level":"INFO","time":"2024-12-02T19:05:06.908+0800","caller":"api-monkey-tester/main.go:116","msg":"服务已关闭"}
+{"level":"INFO","time":"2024-12-02T19:05:10.984+0800","caller":"api-monkey-tester/main.go:90","msg":"服务器启动在 :8080"}
+{"level":"DEBUG","time":"2024-12-02T19:05:15.810+0800","caller":"store/mysql.go:148","msg":"开始查询请求列表, limit: 10"}
+{"level":"DEBUG","time":"2024-12-02T19:05:15.883+0800","caller":"store/mysql.go:182","msg":"成功查询到 0 条请求记录"}
+{"level":"INFO","time":"2024-12-02T19:08:00.457+0800","caller":"api-monkey-tester/main.go:33","msg":"接收到关闭信号，开始优雅关闭..."}
+{"level":"INFO","time":"2024-12-02T19:08:00.458+0800","caller":"api-monkey-tester/main.go:102","msg":"开始关闭服务..."}
+{"level":"INFO","time":"2024-12-02T19:08:00.458+0800","caller":"api-monkey-tester/main.go:116","msg":"服务已关闭"}
+{"level":"INFO","time":"2024-12-02T19:08:04.614+0800","caller":"api-monkey-tester/main.go:90","msg":"服务器启动在 :8080"}
+{"level":"DEBUG","time":"2024-12-02T19:08:04.895+0800","caller":"store/mysql.go:148","msg":"开始查询请求列表, limit: 10"}
+{"level":"DEBUG","time":"2024-12-02T19:08:04.962+0800","caller":"store/mysql.go:182","msg":"成功查询到 0 条请求记录"}
+{"level":"INFO","time":"2024-12-02T19:09:57.106+0800","caller":"api-monkey-tester/main.go:33","msg":"接收到关闭信号，开始优雅关闭..."}
+{"level":"INFO","time":"2024-12-02T19:09:57.106+0800","caller":"api-monkey-tester/main.go:102","msg":"开始关闭服务..."}
+{"level":"INFO","time":"2024-12-02T19:09:57.106+0800","caller":"api-monkey-tester/main.go:116","msg":"服务已关闭"}
+{"level":"INFO","time":"2024-12-02T19:10:04.220+0800","caller":"api-monkey-tester/main.go:90","msg":"服务器启动在 :8080"}
+{"level":"DEBUG","time":"2024-12-02T19:10:08.734+0800","caller":"store/mysql.go:148","msg":"开始查询请求列表, limit: 10"}
+{"level":"DEBUG","time":"2024-12-02T19:10:09.017+0800","caller":"store/mysql.go:182","msg":"成功查询到 0 条请求记录"}
+{"level":"INFO","time":"2024-12-02T19:11:29.503+0800","caller":"api-monkey-tester/main.go:33","msg":"接收到关闭信号，开始优雅关闭..."}
+{"level":"INFO","time":"2024-12-02T19:11:29.504+0800","caller":"api-monkey-tester/main.go:102","msg":"开始关闭服务..."}
+{"level":"INFO","time":"2024-12-02T19:11:29.504+0800","caller":"api-monkey-tester/main.go:116","msg":"服务已关闭"}
+{"level":"INFO","time":"2024-12-02T19:11:34.125+0800","caller":"api-monkey-tester/main.go:90","msg":"服务器启动在 :8080"}
+{"level":"DEBUG","time":"2024-12-02T19:11:36.605+0800","caller":"store/mysql.go:148","msg":"开始查询请求列表, limit: 10"}
+{"level":"DEBUG","time":"2024-12-02T19:11:36.674+0800","caller":"store/mysql.go:182","msg":"成功查询到 0 条请求记录"}
+{"level":"INFO","time":"2024-12-02T19:14:16.781+0800","caller":"api-monkey-tester/main.go:33","msg":"接收到关闭信号，开始优雅关闭..."}
+{"level":"INFO","time":"2024-12-02T19:14:16.781+0800","caller":"api-monkey-tester/main.go:102","msg":"开始关闭服务..."}
+{"level":"INFO","time":"2024-12-02T19:14:16.781+0800","caller":"api-monkey-tester/main.go:116","msg":"服务已关闭"}
+{"level":"INFO","time":"2024-12-02T19:14:21.931+0800","caller":"api-monkey-tester/main.go:90","msg":"服务器启动在 :8080"}
+{"level":"DEBUG","time":"2024-12-02T19:14:23.289+0800","caller":"store/mysql.go:148","msg":"开始查询请求列表, limit: 10"}
+{"level":"DEBUG","time":"2024-12-02T19:14:23.357+0800","caller":"store/mysql.go:182","msg":"成功查询到 0 条请求记录"}
+{"level":"INFO","time":"2024-12-02T19:16:42.929+0800","caller":"api-monkey-tester/main.go:33","msg":"接收到关闭信号，开始优雅关闭..."}
+{"level":"INFO","time":"2024-12-02T19:16:42.929+0800","caller":"api-monkey-tester/main.go:102","msg":"开始关闭服务..."}
+{"level":"INFO","time":"2024-12-02T19:16:42.930+0800","caller":"api-monkey-tester/main.go:116","msg":"服务已关闭"}
+{"level":"INFO","time":"2024-12-02T19:16:47.165+0800","caller":"api-monkey-tester/main.go:90","msg":"服务器启动在 :8080"}
+{"level":"DEBUG","time":"2024-12-02T19:16:49.780+0800","caller":"store/mysql.go:148","msg":"开始查询请求列表, limit: 10"}
+{"level":"DEBUG","time":"2024-12-02T19:16:49.850+0800","caller":"store/mysql.go:182","msg":"成功查询到 0 条请求记录"}
+{"level":"INFO","time":"2024-12-02T19:18:23.271+0800","caller":"api-monkey-tester/main.go:33","msg":"接收到关闭信号，开始优雅关闭..."}
+{"level":"INFO","time":"2024-12-02T19:18:23.273+0800","caller":"api-monkey-tester/main.go:102","msg":"开始关闭服务..."}
+{"level":"INFO","time":"2024-12-02T19:18:23.273+0800","caller":"api-monkey-tester/main.go:116","msg":"服务已关闭"}
+{"level":"INFO","time":"2024-12-02T19:18:27.387+0800","caller":"api-monkey-tester/main.go:90","msg":"服务器启动在 :8080"}
+{"level":"DEBUG","time":"2024-12-02T19:18:32.718+0800","caller":"store/mysql.go:148","msg":"开始查询请求列表, limit: 10"}
+{"level":"DEBUG","time":"2024-12-02T19:18:32.790+0800","caller":"store/mysql.go:182","msg":"成功查询到 0 条请求记录"}
+{"level":"INFO","time":"2024-12-02T19:20:09.508+0800","caller":"api-monkey-tester/main.go:33","msg":"接收到关闭信号，开始优雅关闭..."}
+{"level":"INFO","time":"2024-12-02T19:20:09.509+0800","caller":"api-monkey-tester/main.go:102","msg":"开始关闭服务..."}
+{"level":"INFO","time":"2024-12-02T19:20:09.509+0800","caller":"api-monkey-tester/main.go:116","msg":"服务已关闭"}
+{"level":"INFO","time":"2024-12-02T19:20:14.927+0800","caller":"api-monkey-tester/main.go:90","msg":"服务器启动在 :8080"}
+{"level":"DEBUG","time":"2024-12-02T19:20:15.185+0800","caller":"store/mysql.go:148","msg":"开始查询请求列表, limit: 10"}
+{"level":"DEBUG","time":"2024-12-02T19:20:15.265+0800","caller":"store/mysql.go:182","msg":"成功查询到 0 条请求记录"}
+{"level":"DEBUG","time":"2024-12-02T19:20:22.990+0800","caller":"store/mysql.go:148","msg":"开始查询请求列表, limit: 10"}
+{"level":"DEBUG","time":"2024-12-02T19:20:23.069+0800","caller":"store/mysql.go:182","msg":"成功查询到 0 条请求记录"}
+{"level":"DEBUG","time":"2024-12-02T19:20:23.280+0800","caller":"store/mysql.go:148","msg":"开始查询请求列表, limit: 10"}
+{"level":"DEBUG","time":"2024-12-02T19:20:23.363+0800","caller":"store/mysql.go:182","msg":"成功查询到 0 条请求记录"}
+{"level":"DEBUG","time":"2024-12-02T19:20:23.461+0800","caller":"store/mysql.go:148","msg":"开始查询请求列表, limit: 10"}
+{"level":"DEBUG","time":"2024-12-02T19:20:23.540+0800","caller":"store/mysql.go:182","msg":"成功查询到 0 条请求记录"}
+{"level":"DEBUG","time":"2024-12-02T19:20:23.600+0800","caller":"store/mysql.go:148","msg":"开始查询请求列表, limit: 10"}
+{"level":"DEBUG","time":"2024-12-02T19:20:23.680+0800","caller":"store/mysql.go:182","msg":"成功查询到 0 条请求记录"}
+{"level":"DEBUG","time":"2024-12-02T19:20:23.745+0800","caller":"store/mysql.go:148","msg":"开始查询请求列表, limit: 10"}
+{"level":"DEBUG","time":"2024-12-02T19:20:23.825+0800","caller":"store/mysql.go:182","msg":"成功查询到 0 条请求记录"}
+{"level":"INFO","time":"2024-12-02T19:30:41.332+0800","caller":"api-monkey-tester/main.go:33","msg":"接收到关闭信号，开始优雅关闭..."}
+{"level":"INFO","time":"2024-12-02T19:30:41.333+0800","caller":"api-monkey-tester/main.go:102","msg":"开始关闭服务..."}
+{"level":"INFO","time":"2024-12-02T19:30:41.334+0800","caller":"api-monkey-tester/main.go:116","msg":"服务已关闭"}
+{"level":"INFO","time":"2024-12-02T19:30:46.274+0800","caller":"api-monkey-tester/main.go:90","msg":"服务器启动在 :8080"}
+{"level":"DEBUG","time":"2024-12-02T19:30:46.946+0800","caller":"store/mysql.go:148","msg":"开始查询请求列表, limit: 10"}
+{"level":"DEBUG","time":"2024-12-02T19:30:47.017+0800","caller":"store/mysql.go:182","msg":"成功查询到 0 条请求记录"}
+{"level":"INFO","time":"2024-12-02T19:31:00.135+0800","caller":"store/mysql.go:79","msg":"开始存储请求: req_1733139060135700000"}
+{"level":"INFO","time":"2024-12-02T19:31:00.212+0800","caller":"store/mysql.go:106","msg":"请求存储成功: req_1733139060135700000"}
+{"level":"DEBUG","time":"2024-12-02T19:31:00.212+0800","caller":"store/mysql.go:189","msg":"没有子请求需要插入"}
+{"level":"INFO","time":"2024-12-02T19:31:51.702+0800","caller":"api-monkey-tester/main.go:33","msg":"接收到关闭信号，开始优雅关闭..."}
+{"level":"INFO","time":"2024-12-02T19:31:51.702+0800","caller":"api-monkey-tester/main.go:102","msg":"开始关闭服务..."}
+{"level":"INFO","time":"2024-12-02T19:31:51.702+0800","caller":"api-monkey-tester/main.go:116","msg":"服务已关闭"}
+{"level":"INFO","time":"2024-12-02T19:31:58.090+0800","caller":"api-monkey-tester/main.go:90","msg":"服务器启动在 :8080"}
+{"level":"DEBUG","time":"2024-12-02T19:31:59.774+0800","caller":"store/mysql.go:148","msg":"开始查询请求列表, limit: 10"}
+{"level":"DEBUG","time":"2024-12-02T19:31:59.852+0800","caller":"store/mysql.go:182","msg":"成功查询到 1 条请求记录"}
+{"level":"INFO","time":"2024-12-02T19:32:03.403+0800","caller":"store/mysql.go:79","msg":"开始存储请求: req_1733139123403753000"}
+{"level":"INFO","time":"2024-12-02T19:32:03.483+0800","caller":"store/mysql.go:106","msg":"请求存储成功: req_1733139123403753000"}
+{"level":"DEBUG","time":"2024-12-02T19:32:03.483+0800","caller":"store/mysql.go:189","msg":"没有子请求需要插入"}
+{"level":"INFO","time":"2024-12-02T19:32:05.959+0800","caller":"store/mysql.go:79","msg":"开始存储请求: req_1733139125959155000"}
+{"level":"INFO","time":"2024-12-02T19:32:06.036+0800","caller":"store/mysql.go:106","msg":"请求存储成功: req_1733139125959155000"}
+{"level":"DEBUG","time":"2024-12-02T19:32:06.037+0800","caller":"store/mysql.go:189","msg":"没有子请求需要插入"}
+{"level":"INFO","time":"2024-12-02T19:32:06.516+0800","caller":"store/mysql.go:79","msg":"开始存储请求: req_1733139126516746000"}
+{"level":"INFO","time":"2024-12-02T19:32:06.595+0800","caller":"store/mysql.go:106","msg":"请求存储成功: req_1733139126516746000"}
+{"level":"DEBUG","time":"2024-12-02T19:32:06.595+0800","caller":"store/mysql.go:189","msg":"没有子请求需要插入"}
+{"level":"INFO","time":"2024-12-02T19:32:06.700+0800","caller":"store/mysql.go:79","msg":"开始存储请求: req_1733139126700530000"}
+{"level":"INFO","time":"2024-12-02T19:32:06.779+0800","caller":"store/mysql.go:106","msg":"请求存储成功: req_1733139126700530000"}
+{"level":"DEBUG","time":"2024-12-02T19:32:06.779+0800","caller":"store/mysql.go:189","msg":"没有子请求需要插入"}
+{"level":"INFO","time":"2024-12-02T19:32:06.862+0800","caller":"store/mysql.go:79","msg":"开始存储请求: req_1733139126862281000"}
+{"level":"INFO","time":"2024-12-02T19:32:06.941+0800","caller":"store/mysql.go:106","msg":"请求存储成功: req_1733139126862281000"}
+{"level":"DEBUG","time":"2024-12-02T19:32:06.941+0800","caller":"store/mysql.go:189","msg":"没有子请求需要插入"}
+{"level":"INFO","time":"2024-12-02T19:32:07.024+0800","caller":"store/mysql.go:79","msg":"开始存储请求: req_1733139127024503000"}
+{"level":"INFO","time":"2024-12-02T19:32:07.105+0800","caller":"store/mysql.go:106","msg":"请求存储成功: req_1733139127024503000"}
+{"level":"DEBUG","time":"2024-12-02T19:32:07.105+0800","caller":"store/mysql.go:189","msg":"没有子请求需要插入"}
+{"level":"INFO","time":"2024-12-02T19:32:10.028+0800","caller":"store/mysql.go:79","msg":"开始存储请求: req_1733139130028735000"}
+{"level":"INFO","time":"2024-12-02T19:32:10.107+0800","caller":"store/mysql.go:106","msg":"请求存储成功: req_1733139130028735000"}
+{"level":"DEBUG","time":"2024-12-02T19:32:10.107+0800","caller":"store/mysql.go:189","msg":"没有子请求需要插入"}
+{"level":"INFO","time":"2024-12-02T19:32:10.828+0800","caller":"store/mysql.go:79","msg":"开始存储请求: req_1733139130828497000"}
+{"level":"INFO","time":"2024-12-02T19:32:10.908+0800","caller":"store/mysql.go:106","msg":"请求存储成功: req_1733139130828497000"}
+{"level":"DEBUG","time":"2024-12-02T19:32:10.908+0800","caller":"store/mysql.go:189","msg":"没有子请求需要插入"}
+{"level":"INFO","time":"2024-12-02T19:32:45.217+0800","caller":"api-monkey-tester/main.go:33","msg":"接收到关闭信号，开始优雅关闭..."}
+{"level":"INFO","time":"2024-12-02T19:32:45.217+0800","caller":"api-monkey-tester/main.go:102","msg":"开始关闭服务..."}
+{"level":"INFO","time":"2024-12-02T19:32:45.218+0800","caller":"api-monkey-tester/main.go:116","msg":"服务已关闭"}
+{"level":"INFO","time":"2024-12-02T19:32:50.069+0800","caller":"api-monkey-tester/main.go:90","msg":"服务器启动在 :8080"}
+{"level":"DEBUG","time":"2024-12-02T19:32:51.282+0800","caller":"store/mysql.go:148","msg":"开始查询请求列表, limit: 10"}
+{"level":"DEBUG","time":"2024-12-02T19:32:51.347+0800","caller":"store/mysql.go:182","msg":"成功查询到 9 条请求记录"}
+{"level":"INFO","time":"2024-12-02T19:33:04.541+0800","caller":"store/mysql.go:79","msg":"开始存储请求: req_1733139184541086000"}
+{"level":"INFO","time":"2024-12-02T19:33:04.609+0800","caller":"store/mysql.go:106","msg":"请求存储成功: req_1733139184541086000"}
+{"level":"DEBUG","time":"2024-12-02T19:33:04.609+0800","caller":"store/mysql.go:189","msg":"没有子请求需要插入"}
+{"level":"DEBUG","time":"2024-12-02T19:33:55.478+0800","caller":"store/mysql.go:148","msg":"开始查询请求列表, limit: 10"}
+{"level":"DEBUG","time":"2024-12-02T19:33:55.545+0800","caller":"store/mysql.go:182","msg":"成功查询到 10 条请求记录"}
+{"level":"INFO","time":"2024-12-02T19:34:02.040+0800","caller":"store/mysql.go:79","msg":"开始存储请求: req_1733139242040956000"}
+{"level":"INFO","time":"2024-12-02T19:34:02.108+0800","caller":"store/mysql.go:106","msg":"请求存储成功: req_1733139242040956000"}
+{"level":"DEBUG","time":"2024-12-02T19:34:02.108+0800","caller":"store/mysql.go:189","msg":"没有子请求需要插入"}
+{"level":"INFO","time":"2024-12-02T19:35:37.611+0800","caller":"api-monkey-tester/main.go:33","msg":"接收到关闭信号，开始优雅关闭..."}
+{"level":"INFO","time":"2024-12-02T19:35:37.611+0800","caller":"api-monkey-tester/main.go:102","msg":"开始关闭服务..."}
+{"level":"INFO","time":"2024-12-02T19:35:37.611+0800","caller":"api-monkey-tester/main.go:116","msg":"服务已关闭"}
+{"level":"INFO","time":"2024-12-02T19:35:41.990+0800","caller":"api-monkey-tester/main.go:90","msg":"服务器启动在 :8080"}
+{"level":"DEBUG","time":"2024-12-02T19:35:47.398+0800","caller":"store/mysql.go:148","msg":"开始查询请求列表, limit: 10"}
+{"level":"DEBUG","time":"2024-12-02T19:35:47.479+0800","caller":"store/mysql.go:182","msg":"成功查询到 10 条请求记录"}
+{"level":"INFO","time":"2024-12-02T19:36:38.550+0800","caller":"api-monkey-tester/main.go:33","msg":"接收到关闭信号，开始优雅关闭..."}
+{"level":"INFO","time":"2024-12-02T19:36:38.550+0800","caller":"api-monkey-tester/main.go:102","msg":"开始关闭服务..."}
+{"level":"INFO","time":"2024-12-02T19:36:38.551+0800","caller":"api-monkey-tester/main.go:116","msg":"服务已关闭"}
+{"level":"INFO","time":"2024-12-02T19:36:42.328+0800","caller":"api-monkey-tester/main.go:90","msg":"服务器启动在 :8080"}
+{"level":"DEBUG","time":"2024-12-02T19:36:45.386+0800","caller":"store/mysql.go:148","msg":"开始查询请求列表, limit: 10"}
+{"level":"DEBUG","time":"2024-12-02T19:36:45.461+0800","caller":"store/mysql.go:182","msg":"成功查询到 10 条请求记录"}
+{"level":"DEBUG","time":"2024-12-02T19:36:47.706+0800","caller":"store/mysql.go:148","msg":"开始查询请求列表, limit: 10"}
+{"level":"DEBUG","time":"2024-12-02T19:36:47.781+0800","caller":"store/mysql.go:182","msg":"成功查询到 10 条请求记录"}
+{"level":"INFO","time":"2024-12-02T19:37:39.259+0800","caller":"api-monkey-tester/main.go:33","msg":"接收到关闭信号，开始优雅关闭..."}
+{"level":"INFO","time":"2024-12-02T19:37:39.260+0800","caller":"api-monkey-tester/main.go:102","msg":"开始关闭服务..."}
+{"level":"INFO","time":"2024-12-02T19:37:39.261+0800","caller":"api-monkey-tester/main.go:116","msg":"服务已关闭"}
+{"level":"INFO","time":"2024-12-02T19:37:43.210+0800","caller":"api-monkey-tester/main.go:90","msg":"服务器启动在 :8080"}
+{"level":"DEBUG","time":"2024-12-02T19:37:45.995+0800","caller":"store/mysql.go:148","msg":"开始查询请求列表, limit: 10"}
+{"level":"DEBUG","time":"2024-12-02T19:37:46.066+0800","caller":"store/mysql.go:182","msg":"成功查询到 10 条请求记录"}
+{"level":"INFO","time":"2024-12-02T19:38:02.812+0800","caller":"store/mysql.go:79","msg":"开始存储请求: req_1733139482812951000"}
+{"level":"INFO","time":"2024-12-02T19:38:02.884+0800","caller":"store/mysql.go:106","msg":"请求存储成功: req_1733139482812951000"}
+{"level":"DEBUG","time":"2024-12-02T19:38:02.884+0800","caller":"store/mysql.go:189","msg":"没有子请求需要插入"}
+{"level":"INFO","time":"2024-12-03T10:37:43.843+0800","caller":"api-monkey-tester/main.go:33","msg":"接收到关闭信号，开始优雅关闭..."}
+{"level":"INFO","time":"2024-12-03T10:37:43.844+0800","caller":"api-monkey-tester/main.go:102","msg":"开始关闭服务..."}
+{"level":"ERROR","time":"2024-12-03T10:37:43.845+0800","caller":"api-monkey-tester/main.go:113","msg":"关闭存储连接失败:bad connection"}
+{"level":"INFO","time":"2024-12-03T10:37:43.845+0800","caller":"api-monkey-tester/main.go:116","msg":"服务已关闭"}
+{"level":"INFO","time":"2024-12-03T10:42:50.888+0800","caller":"api-monkey-tester/main.go:90","msg":"服务器启动在 :8080"}
+{"level":"INFO","time":"2024-12-03T10:52:56.051+0800","caller":"api-monkey-tester/main.go:33","msg":"接收到关闭信号，开始优雅关闭..."}
+{"level":"INFO","time":"2024-12-03T10:52:56.052+0800","caller":"api-monkey-tester/main.go:102","msg":"开始关闭服务..."}
+{"level":"INFO","time":"2024-12-03T10:52:56.052+0800","caller":"api-monkey-tester/main.go:116","msg":"服务已关闭"}
+{"level":"INFO","time":"2024-12-03T10:54:17.755+0800","caller":"api-monkey-tester/main.go:90","msg":"服务器启动在 :8080"}

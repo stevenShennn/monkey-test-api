@@ -2,112 +2,108 @@ package task
 
 import (
 	"fmt"
-	"github.com/google/uuid"
-	"monkey-test-api/internal/logger"
-	"reflect"
+	"monkey-test-api/internal/types"
 	"time"
 )
 
+// Generator 测试任务生成器
 type Generator struct {
-	config *Config
+	paramConfig *types.ParamConfig
 }
 
 // NewGenerator 创建新的任务生成器
-func NewGenerator(config *Config) TaskGenerator {
+func NewGenerator(config *types.ParamConfig) *Generator {
 	return &Generator{
-		config: config,
+		paramConfig: config,
 	}
 }
 
 // GenerateTestObjects 生成测试对象
-func (g *Generator) GenerateTestObjects(parentRequest *Request) ([]TestObject, error) {
-	logger.Infof("开始为请求 %s 生成测试对象", parentRequest.RequestID)
-	
+func (g *Generator) GenerateTestObjects(req *types.Request) ([]TestObject, error) {
 	var testObjects []TestObject
 
-	// 遍历请求参数
-	for paramName, paramValue := range parentRequest.Params {
-		paramType := g.detectParamType(paramValue)
-		testValues := g.getTestValues(paramType)
-
-		// 为每个测试值生成一个测试对象
-		for _, testValue := range testValues {
-			testObj := g.createTestObject(parentRequest, paramName, testValue)
-			testObjects = append(testObjects, testObj)
+	// 处理字符串参数
+	for key, value := range req.Params {
+		if _, ok := value.(string); ok {
+			for _, test := range g.paramConfig.String.Tests {
+				testObj := TestObject{
+					TestID:          fmt.Sprintf("%s-%s", req.RequestID, generateID()),
+					ParentRequestID: req.RequestID,
+					Method:         req.Method,
+					URL:            req.URL,
+					Headers:        req.Headers,
+					Body:           req.Body,
+					Params:         copyParams(req.Params),
+					Reason:         fmt.Sprintf("%s: %s", test.Description, test.Reason),
+					Status:         "待处理",
+					Risk:           test.Risk,
+					Timestamp:      time.Now(),
+				}
+				testObj.Params[key] = test.Value
+				testObjects = append(testObjects, testObj)
+			}
 		}
 	}
 
-	logger.Infof("为请求 %s 生成了 %d 个测试对象", parentRequest.RequestID, len(testObjects))
+	// 处理数字参数
+	for key, value := range req.Params {
+		if _, ok := value.(float64); ok {
+			for _, test := range g.paramConfig.Number.Tests {
+				testObj := TestObject{
+					TestID:          fmt.Sprintf("%s-%s", req.RequestID, generateID()),
+					ParentRequestID: req.RequestID,
+					Method:         req.Method,
+					URL:            req.URL,
+					Headers:        req.Headers,
+					Body:           req.Body,
+					Params:         copyParams(req.Params),
+					Reason:         fmt.Sprintf("%s: %s", test.Description, test.Reason),
+					Status:         "待处理",
+					Risk:           test.Risk,
+					Timestamp:      time.Now(),
+				}
+				testObj.Params[key] = test.Value
+				testObjects = append(testObjects, testObj)
+			}
+		}
+	}
+
+	// 处理布尔参数
+	for key, value := range req.Params {
+		if _, ok := value.(bool); ok {
+			for _, test := range g.paramConfig.Bool.Tests {
+				testObj := TestObject{
+					TestID:          fmt.Sprintf("%s-%s", req.RequestID, generateID()),
+					ParentRequestID: req.RequestID,
+					Method:         req.Method,
+					URL:            req.URL,
+					Headers:        req.Headers,
+					Body:           req.Body,
+					Params:         copyParams(req.Params),
+					Reason:         fmt.Sprintf("%s: %s", test.Description, test.Reason),
+					Status:         "待处理",
+					Risk:           test.Risk,
+					Timestamp:      time.Now(),
+				}
+				testObj.Params[key] = test.Value
+				testObjects = append(testObjects, testObj)
+			}
+		}
+	}
+
 	return testObjects, nil
 }
 
-// detectParamType 检测参数类型
-func (g *Generator) detectParamType(value interface{}) ParamType {
-	if value == nil {
-		return ParamTypeString
-	}
-
-	switch reflect.TypeOf(value).Kind() {
-	case reflect.String:
-		return ParamTypeString
-	case reflect.Int, reflect.Int8, reflect.Int16, reflect.Int32, reflect.Int64,
-		reflect.Uint, reflect.Uint8, reflect.Uint16, reflect.Uint32, reflect.Uint64,
-		reflect.Float32, reflect.Float64:
-		return ParamTypeNumber
-	case reflect.Bool:
-		return ParamTypeBoolean
-	case reflect.Map:
-		return ParamTypeObject
-	case reflect.Slice, reflect.Array:
-		return ParamTypeArray
-	default:
-		return ParamTypeString
-	}
+// 辅助函数：生成唯一ID
+func generateID() string {
+	return fmt.Sprintf("%d", time.Now().UnixNano())
 }
 
-// getTestValues 获取测试值
-func (g *Generator) getTestValues(paramType ParamType) []ParamTestValue {
-	switch paramType {
-	case ParamTypeString:
-		return g.config.String.Values
-	case ParamTypeNumber:
-		return g.config.Number.Values
-	case ParamTypeBoolean:
-		return g.config.Boolean.Values
-	case ParamTypeObject:
-		return g.config.Object.Values
-	case ParamTypeArray:
-		return g.config.Array.Values
-	case ParamTypeDate:
-		return g.config.Date.Values
-	case ParamTypeTime:
-		return g.config.Time.Values
-	default:
-		return g.config.String.Values
+// 辅助函数：复制参数映射
+func copyParams(params map[string]interface{}) map[string]interface{} {
+	newParams := make(map[string]interface{})
+	for k, v := range params {
+		newParams[k] = v
 	}
-}
-
-// createTestObject 创建测试对象
-func (g *Generator) createTestObject(parent *Request, paramName string, testValue ParamTestValue) TestObject {
-	// 复制父请求的参数
-	params := make(map[string]interface{})
-	for k, v := range parent.Params {
-		params[k] = v
-	}
-
-	// 替换测试参数
-	params[paramName] = testValue.Value
-
-	return TestObject{
-		TestID:         uuid.New().String(),
-		ParentRequestID: parent.RequestID,
-		Method:         parent.Method,
-		URL:            parent.URL,
-		Headers:        parent.Headers,
-		Body:           parent.Body,
-		Params:         params,
-		Reason:         fmt.Sprintf(testValue.Reason, paramName),
-		Status:         "待处理",
-		Timestamp:      time.Now(),
-	}
+	return newParams
 } 
